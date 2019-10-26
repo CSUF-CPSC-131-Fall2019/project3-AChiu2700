@@ -42,8 +42,8 @@ using std::stringstream;
 // std::stack and std::queue both provide capability to view or modify the next element to be removed.  std::stack calls is top()
 // while std::queue calls it front().  This pair of template functions provides a general concept called peek() that delegates to
 // the appropriate top() or front() for a given container.
-template<class Container>
-auto & peek( Container & container)
+template<typename T>
+auto & peek( std::stack<T> & container )
 { return container.top(); }
 
 template<typename T>
