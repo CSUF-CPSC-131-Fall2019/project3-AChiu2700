@@ -64,7 +64,7 @@ Strategy_t<Strategy>::Strategy_t( const std::string & name,
 
 // This function is incomplete. It needs some lines of code.
 template<class Strategy>
-bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth, 
+bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
 				    const unsigned int & currDay) {
   //pay the bills starting from top/front as long as there is
   //enough money in the checking account
@@ -75,10 +75,10 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
     double fee = 0.0;
     if( someBill.isOverdue( currMonth, currDay ) ) {
       // COMPLETE BELOW:
-      // COMPUTE THE TOTAL PENALTY IN VARIABLE  <fee> AS 
+      // COMPUTE THE TOTAL PENALTY IN VARIABLE  <fee> AS
       // 35 + round(0.1 * days overdue * amount due) / 100
     }
-    
+
     if( someBill.amount_due_ + fee <= myChecking_.amount_left_ ) {
       myChecking_.amount_left_ -= someBill.amount_due_ + fee;
       allBills_.pop();
@@ -120,21 +120,22 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
 
 	// COMPLETE BELOW:
 	// ADD <newBill> TO THE STACK/QUEUE OF <allBills_>
-      }
-      
+    
+  }
+
       else if( cell == "paycheck" ) {
 	getline( lineStream, cell, '\n' );
 	myChecking_.amount_left_ += stod( cell );
       }
-      
+
       else if( cell == "pay" ) {
         // retrieve the date, month and day, of the pay
         getline( lineStream, cell, '/' );
         unsigned int currMonth = stoul( cell );
-	
+
         getline( lineStream, cell, '\n' );
         unsigned int currDay = stoul( cell );
-	
+
 	// COMPLETE BELOW:
 	// CALL THE FUNCTION MEMBER TO PAY AS MANY BILLS AS POSSIBLE
       }

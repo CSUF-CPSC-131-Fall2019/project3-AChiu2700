@@ -7,21 +7,30 @@
 ************************************************/
 
 // ADD IMPLEMENTATION OF CONSTRUCTOR FOR CLASS Bill
+Bill::Bill(string p, double due, unsigned int m, unsigned d):
+					payee_ (p), amount_due_(d), due_month_(m), due_day_(d){}
 
-bool Bill::isOverdue(const unsigned int &currMonth, 
+bool Bill::isOverdue(const unsigned int &currMonth,
 		     const unsigned int& currDay ) {
-  // returns true if the due date for the bill is past 
+  // returns true if the due date for the bill is past
   // the date (month and day) given as parameters
+	if(currMonth > due_month_)
+		return true;
+	if( currMonth == due_month_ ){
+		if( currDay > due_day_ ){
+			return true
+		}
+	}
   // false otherwise
-
+	else { return false; }
 // TO BE COMPLETED
 
 }
 
 // This function member implementation is complete
-unsigned int Bill::daysOverdue(const unsigned int &currMonth, 
+unsigned int Bill::daysOverdue(const unsigned int &currMonth,
 			       const unsigned int& currDay ) {
-  // computes the number of days elapsed between the due date 
+  // computes the number of days elapsed between the due date
   // of the bill and the date (month and day) given as parameters
   if (due_month_ > currMonth )
     return 0;
@@ -58,6 +67,6 @@ unsigned int Bill::daysOverdue(const unsigned int &currMonth,
     tempMonth++;
   }
   counter = counter + currDay;
-  
+
   return counter;
 }
