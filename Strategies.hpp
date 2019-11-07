@@ -10,8 +10,10 @@
 
 #include "Bank.hpp"
 #include "Bill.hpp"
+#include "Bank.cpp"
+#include "Bill.cpp"
 
-template< class Strategy>
+template< class Strategy >
 struct Strategy_t {
   Bank     myChecking_;
   Strategy allBills_;
@@ -77,6 +79,7 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
       // COMPLETE BELOW:
       // COMPUTE THE TOTAL PENALTY IN VARIABLE  <fee> AS
       // 35 + round(0.1 * days overdue * amount due) / 100
+      fee = 35 + round(0.1 * someBill.daysOverdue(currMonth, currDay) * someBill.amount_due_) / 100;
     }
 
     if( someBill.amount_due_ + fee <= myChecking_.amount_left_ ) {
@@ -118,10 +121,10 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
         getline( lineStream, cell, '\n' );
         newBill.due_day_ = stoul( cell );
 
-	// COMPLETE BELOW:
-	// ADD <newBill> TO THE STACK/QUEUE OF <allBills_>
-    
-  }
+	    // COMPLETE BELOW:
+	    // ADD <newBill> TO THE STACK/QUEUE OF <allBills_>
+      allBills_.push(newBill);
+    }
 
       else if( cell == "paycheck" ) {
 	getline( lineStream, cell, '\n' );
@@ -138,6 +141,7 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
 
 	// COMPLETE BELOW:
 	// CALL THE FUNCTION MEMBER TO PAY AS MANY BILLS AS POSSIBLE
+        payBills(currMonth, currDay);
       }
     }
   }

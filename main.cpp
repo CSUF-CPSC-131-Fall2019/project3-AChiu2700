@@ -19,7 +19,7 @@ int main(int argc, char const *argv[]) {
   {
     QueueStrategy q1;
     q1.readFile( "data1.txt" );
-    
+
     std::cout <<" Queue Strategy: file data1.txt" << std::endl;
     assertTrue( "Amount left", 1000.0, q1.myChecking_.amount_left_ );
     assertTrue( "Number of bills", 4, q1.allBills_.size() );
@@ -29,11 +29,11 @@ int main(int argc, char const *argv[]) {
     assertTrue( "First bill: Day due", 17, q1.allBills_.front().due_day_ );
     std::cout << std::endl;
   }
- 
+
   {
     StackStrategy s1;
     s1.readFile( "data1.txt" );
-    
+
     std::cout <<" Stack Strategy: file data1.txt" << std::endl;
     assertTrue( "Amount left", 1000.0, s1.myChecking_.amount_left_ );
     assertTrue( "Number of bills", 4, s1.allBills_.size() );
@@ -46,17 +46,17 @@ int main(int argc, char const *argv[]) {
   {
     QueueStrategy q2;
     q2.readFile( "data2.txt" );
-    
+
     std::cout <<" Queue Strategy: file data2.txt" << std::endl;
     assertTrue( "Amount left in checking account", 325.33, q2.myChecking_.amount_left_ );
     assertTrue( "Amount penalties in overdue bills", 81.29,  q2.amount_penalties_ );
     std::cout << std::endl;
   }
-  
+
   {
     StackStrategy s2;
     s2.readFile( "data2.txt" );
-    
+
     std::cout <<" Stack Strategy: file data2.txt" << std::endl;
     assertTrue( "Amount left in checking account", 900.37, s2.myChecking_.amount_left_ );
     assertTrue( "Amount penalties in overdue bills", 36.88,  s2.amount_penalties_        );
@@ -65,23 +65,23 @@ int main(int argc, char const *argv[]) {
   {
     QueueStrategy q3;
     q3.readFile( "data3.txt" );
-    
+
     std::cout <<" Queue Strategy: file data3.txt" << std::endl;
     assertTrue( "Amount left in checking account",   45.54,  q3.myChecking_.amount_left_ );
     assertTrue( "Amount penalties in overdue bills", 239.22, q3.amount_penalties_ );
     std::cout << std::endl;
   }
-  
+
   {
     StackStrategy s3;
     s3.readFile( "data3.txt" );
-    
+
     std::cout <<" Stack Strategy: file data3.txt" << std::endl;
     assertTrue( "Amount left in checking account", 30.69,  s3.myChecking_.amount_left_ );
     assertTrue( "Amount penalties in overdue bills", 254.07, s3.amount_penalties_        );
     std::cout << std::endl;
   }
- 
+
   cout << endl << testCount << " tests passed out of " << testTotal << " total tests" << endl;
   return 0;
 }
