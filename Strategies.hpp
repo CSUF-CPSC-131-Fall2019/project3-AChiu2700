@@ -10,8 +10,6 @@
 
 #include "Bank.hpp"
 #include "Bill.hpp"
-#include "Bank.cpp"
-#include "Bill.cpp"
 
 template< class Strategy >
 struct Strategy_t {
