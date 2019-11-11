@@ -97,6 +97,7 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
 template<class Strategy>
 void Strategy_t<Strategy>::readFile( const std::string & filename )
 {
+  myChecking_.amount_left_ = 0;
   ifstream inFile( filename );
   Bill     newBill;
   string   line;
