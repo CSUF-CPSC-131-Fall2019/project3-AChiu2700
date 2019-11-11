@@ -4,7 +4,7 @@
 
 
 struct Bank {
-  
+
     std::string name_;
     double amount_starting_;
     double amount_salary_;

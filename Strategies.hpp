@@ -10,6 +10,8 @@
 
 #include "Bank.hpp"
 #include "Bill.hpp"
+#include "Bank.cpp"
+#include "Bill.cpp"
 
 template< class Strategy >
 struct Strategy_t {
@@ -70,7 +72,7 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
   //enough money in the checking account
   //returns true if all bills are paid, false otherwise
   Bill someBill;
-  while( allBills_.size() > 0 ) {
+  while( allBills_.size() ) {
     someBill    = peek( allBills_ );
     double fee = 0.0;
     if( someBill.isOverdue( currMonth, currDay ) ) {
@@ -136,7 +138,6 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
 
         getline( lineStream, cell, '\n' );
         unsigned int currDay = stoul( cell );
-
 	// COMPLETE BELOW:
 	// CALL THE FUNCTION MEMBER TO PAY AS MANY BILLS AS POSSIBLE
         payBills(currMonth, currDay);

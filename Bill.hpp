@@ -15,8 +15,6 @@ struct Bill {
         const unsigned int & month=0,
         const unsigned int & day=0);
 
-    Bill(std::string, double, unsigned int, unsigned int);
-
     bool isOverdue(const unsigned int &currMonth, const unsigned int& currDay );
     unsigned int daysOverdue(const unsigned int &currMonth, const unsigned int& currDay );
 };
