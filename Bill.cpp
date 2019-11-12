@@ -16,16 +16,16 @@ bool Bill::isOverdue(const unsigned int &currMonth,
 		     const unsigned int& currDay ) {
   // returns true if the due date for the bill is past
   // the date (month and day) given as parameters
-	if( due_month_ > currMonth )
-		return false;
+	if( currMonth > due_month_ )
+		return true;
 	else if( currMonth == due_month_ ){
-		if(  due_day_ >= currDay ){
-			return false;
+		if(  currDay >= due_day_ ){
+			return true;
 		}
 	}
   // false otherwise
 	else {
-		return true;
+		return false;
 	}
 }
 
